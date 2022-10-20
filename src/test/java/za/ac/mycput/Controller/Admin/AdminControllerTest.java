@@ -11,10 +11,12 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import za.ac.mycput.Domain.Admin;
-import za.ac.mycput.Domain.Sales;
 import za.ac.mycput.Factory.AdminFactory;
-
 import java.util.Arrays;
+
+/*
+Devon May (219168296)
+ */
 
 import static org.junit.jupiter.api.Assertions.*;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
