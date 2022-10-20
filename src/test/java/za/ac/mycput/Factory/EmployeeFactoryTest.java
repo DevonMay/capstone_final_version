@@ -1,24 +1,22 @@
 package za.ac.mycput.Factory;
 
-import org.junit.Test;
-import za.ac.mycput.Entity.Admin;
-import za.ac.mycput.Entity.Employee;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import za.ac.mycput.Domain.Employee;
 /*
-    Author : Devon Sherwyn May
-    Student number : 219168296
-    Date : 10 April 2022
-    EmployeeFactoryTest.Java
-*/
-public class EmployeeFactoryTest
-{
+ * EmployeeFactoryTest.Java
+ * Entity for Employee Factory test
+ * Author: Devon Sherwyn May (219168296)
+ * Date: 26th October 2022
+ * */
+import static org.junit.jupiter.api.Assertions.*;
+
+class EmployeeFactoryTest {
+
     @Test
-    public void test()
+    void build()
     {
-        Employee employee = EmployeeFactory.createEmployee("Devon",
-                "Pays","0662686200","Driver","09");
-        System.out.println(employee.toString());
+        Employee employee = EmployeeFactory.build("Mark","Luke","01111111","Administration","Ad01");
+        System.out.println(employee);
         assertNotNull(employee);
     }
 }

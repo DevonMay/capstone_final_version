@@ -1,20 +1,30 @@
-package za.ac.mycput.Entity;
-/*
-    Author : Devon Sherwyn May
-    Student number : 219168296
-    Date : 10 April 2022
-    Employee.Java
-*/
+package za.ac.mycput.Domain;
 
-public class Employee
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+
+/*
+ * Employee.Java
+ * Entity for Employee
+ * Author: Devon Sherwyn May (219168296)
+ * Date: 26th October 2022
+ * */
+@Entity
+@Table(name= "employee")
+public class Employee implements Serializable
 {
-    private String empFirstName;
-    private String empLastName;
-    private String empPhoneNumber;
-    private String empRole;
+    @NotNull
+    private String empFirstName,empLastName,empPhoneNumber,empRole;
+    @Id
+    @Column(name="employee_id")
     private String empID;
 
-    public Employee (Builder builder)
+    protected Employee(){}
+    private Employee (Builder builder)
     {
         this.empFirstName=builder.empFirstName;
         this.empLastName=builder.empLastName;
@@ -26,41 +36,17 @@ public class Employee
     public String getEmpFirstName() {
         return empFirstName;
     }
-
-    public void setEmpFirstName(String empFirstName) {
-        this.empFirstName = empFirstName;
-    }
-
     public String getEmpLastName() {
         return empLastName;
     }
-
-    public void setEmpLastName(String empLastName) {
-        this.empLastName = empLastName;
-    }
-
     public String getEmpPhoneNumber() {
         return empPhoneNumber;
     }
-
-    public void setEmpPhoneNumber(String empPhoneNumber) {
-        this.empPhoneNumber = empPhoneNumber;
-    }
-
     public String getEmpRole() {
         return empRole;
     }
-
-    public void setEmpRole(String empRole) {
-        this.empRole = empRole;
-    }
-
     public String getEmpID() {
         return empID;
-    }
-
-    public void setEmpID(String empID) {
-        this.empID = empID;
     }
 
     @Override
@@ -82,28 +68,28 @@ public class Employee
         private String empRole;
         private String empID;
 
-        public Builder setEmpFirstName(String empFirstName)
+        public Builder EmpFirstName(String empFirstName)
         {
             this.empFirstName = empFirstName;
             return this;
         }
 
-        public Builder setEmpLastName(String empLastName) {
+        public Builder EmpLastName(String empLastName) {
             this.empLastName = empLastName;
             return this;
         }
 
-        public Builder setEmpPhoneNumber(String empPhoneNumber) {
+        public Builder EmpPhoneNumber(String empPhoneNumber) {
             this.empPhoneNumber = empPhoneNumber;
             return this;
         }
 
-        public Builder setEmpRole(String empRole) {
+        public Builder EmpRole(String empRole) {
             this.empRole = empRole;
             return this;
         }
 
-        public Builder setEmpID(String empID) {
+        public Builder EmpID(String empID) {
             this.empID = empID;
             return this;
         }
