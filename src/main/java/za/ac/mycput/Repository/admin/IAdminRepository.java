@@ -1,7 +1,9 @@
 package za.ac.mycput.Repository.admin;
 
-import za.ac.mycput.Entity.Admin;
-import za.ac.mycput.Repository.IRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import za.ac.mycput.Domain.Admin;
+
 
 import java.util.Set;
 /*
@@ -10,8 +12,5 @@ import java.util.Set;
     Date : 10 April 2022
     IAdminRepository.Java
 */
-public interface IAdminRepository extends IRepository<Admin,String>
-{
-    public Set<Admin> getAll();
-}
-
+@Repository
+public interface IAdminRepository  extends JpaRepository<Admin,String> {}

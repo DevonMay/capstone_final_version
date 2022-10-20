@@ -1,24 +1,22 @@
 package za.ac.mycput.Factory;
 
-import org.junit.Test;
-import za.ac.mycput.Entity.Admin;
-
-import static org.junit.Assert.assertNotNull;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import za.ac.mycput.Domain.Admin;
 /*
-    Author : Devon Sherwyn May
-    Student number : 219168296
-    Date : 10 April 2022
-    AdminFactoryTest.Java
-*/
-public class AdminFactoryTest
-{
+ * AdminFactoryTest.Java
+ * Entity for Admin Factory test
+ * Author: Devon Sherwyn May (219168296)
+ * Date: 26th October 2022
+ * */
+import static org.junit.jupiter.api.Assertions.*;
+
+class AdminFactoryTest {
+
     @Test
-    public void test()
+    void build()
     {
-        Admin admin = AdminFactory.createAdmin("Brad",
-                "Raatz","0662686801","01");
-        System.out.println(admin.toString());
-        assertNotNull(admin);
+     Admin admin = AdminFactory.build("Devon","May","02222222","01");
+     System.out.println(admin);
+     assertNotNull(admin);
     }
 }

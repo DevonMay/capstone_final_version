@@ -1,20 +1,30 @@
-package za.ac.mycput.Entity;
+package za.ac.mycput.Domain;
 
- /*
-        Author : Devon Sherwyn May
-        Student number : 219168296
-        Date : 10 April 2022
-        Admin.Java
-    */
-public class Admin
+import com.sun.istack.NotNull;
+
+import javax.persistence.*;
+import java.io.Serializable;
+
+/*
+* Admin.Java
+* Entity for Admin
+* Author: Devon Sherwyn May (219168296)
+* Date: 26th October 2022
+* */
+@Entity
+@Table(name = "admin")
+public class Admin implements Serializable
 {
-    private String adminFirstName;
-    private String adminLastName;
-    private String adminPhoneNumber;
+    @NotNull
+    private String adminFirstName, adminLastName, adminPhoneNumber;
+    @Id
+    @Column(name = "admin_id")
     private String adminID;
 
-    public Admin(Builder builder)
-    {
+
+    protected Admin() {}
+
+    private Admin(Builder builder) {
         this.adminFirstName = builder.adminFirstName;
         this.adminLastName = builder.adminLastName;
         this.adminPhoneNumber = builder.adminPhoneNumber;
@@ -26,32 +36,16 @@ public class Admin
         return adminFirstName;
     }
 
-    public void setAdminFirstName(String adminFirstName) {
-        this.adminFirstName = adminFirstName;
-    }
-
     public String getAdminLastName() {
         return adminLastName;
-    }
-
-    public void setAdminLastName(String adminLastName) {
-        this.adminLastName = adminLastName;
     }
 
     public String getAdminPhoneNumber() {
         return adminPhoneNumber;
     }
 
-    public void setAdminPhoneNumber(String adminPhoneNumber) {
-        this.adminPhoneNumber = adminPhoneNumber;
-    }
-
     public String getAdminID() {
         return adminID;
-    }
-
-    public void setAdminID(String adminID) {
-        this.adminID = adminID;
     }
 
     @Override
@@ -71,27 +65,27 @@ public class Admin
         private String adminID;
 
 
-        public Builder setAdminFirstName(String adminFirstName) {
+        public Builder adminFirstName(String adminFirstName) {
             this.adminFirstName = adminFirstName;
             return this;
         }
 
-        public Builder setAdminLastName(String adminLastName) {
+        public Builder adminLastName(String adminLastName) {
             this.adminLastName = adminLastName;
             return this;
         }
 
-        public Builder setAdminPhoneNumber(String adminPhoneNumber) {
+        public Builder adminPhoneNumber(String adminPhoneNumber) {
             this.adminPhoneNumber = adminPhoneNumber;
             return this;
         }
 
-        public Builder setAdminID(String adminID) {
+        public Builder adminID(String adminID) {
             this.adminID = adminID;
             return this;
         }
 
-        public Builder copy(za.ac.mycput.Entity.Admin admin) {
+        public Builder copy(Admin admin) {
             this.adminFirstName = admin.adminFirstName;
             this.adminLastName = admin.adminLastName;
             this.adminPhoneNumber = admin.adminPhoneNumber;
@@ -99,11 +93,8 @@ public class Admin
             return this;
         }
 
-        public za.ac.mycput.Entity.Admin build()
-        {
-            return new za.ac.mycput.Entity.Admin(this);
+        public Admin build() {
+            return new Admin(this);
         }
     }
 }
-
-

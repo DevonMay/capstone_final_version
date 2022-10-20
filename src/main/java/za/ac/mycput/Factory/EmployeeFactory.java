@@ -5,19 +5,23 @@ package za.ac.mycput.Factory;
     Date : 10 April 2022
     EmployeeFactory.Java
 */
-import za.ac.mycput.Entity.Employee;
+
+import za.ac.mycput.Domain.Employee;
+
+import static org.hibernate.validator.internal.util.StringHelper.isNullOrEmptyString;
 
 public class EmployeeFactory
 {
-    public static Employee createEmployee(String empFirstName, String empLastName, String empPhoneNumber, String empRole, String empID)
+    public static Employee build(String empFirstName, String empLastName, String empPhoneNumber, String empRole, String empID)
     {
-        Employee employee  = new Employee.Builder()
-                .setEmpFirstName(empFirstName)
-                .setEmpLastName(empLastName)
-                .setEmpPhoneNumber(empPhoneNumber)
-                .setEmpRole(empRole)
-                .setEmpID(empID)
+        if(isNullOrEmptyString(empID) ||isNullOrEmptyString(empFirstName)||isNullOrEmptyString(empLastName)||isNullOrEmptyString(empPhoneNumber))
+        throw new IllegalArgumentException("Please fill in all fields ");
+            return new Employee.Builder()
+                .EmpFirstName(empFirstName)
+                .EmpLastName(empLastName)
+                .EmpPhoneNumber(empPhoneNumber)
+                .EmpRole(empRole)
+                .EmpID(empID)
                 .build();
-        return employee;
     }
 }

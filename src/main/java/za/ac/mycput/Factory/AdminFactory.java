@@ -5,18 +5,17 @@ package za.ac.mycput.Factory;
     Date : 10 April 2022
     AdminFactory.Java
 */
-import za.ac.mycput.Entity.Admin;
+
+import za.ac.mycput.Domain.Admin;
+
+import static org.hibernate.validator.internal.util.StringHelper.isNullOrEmptyString;
 
 public class AdminFactory
 {
-    public static Admin createAdmin(String adminFirstName, String adminLastName, String adminPhoneNumber, String adminID)
+    public static Admin build(String adminFirstName, String adminLastName, String adminPhoneNumber, String adminID)
     {
-        Admin admin = new Admin.Builder()
-                .setAdminFirstName(adminFirstName)
-                .setAdminLastName(adminLastName)
-                .setAdminPhoneNumber(adminPhoneNumber)
-                .setAdminID(adminID)
-                .build();
-        return admin;
+        if (isNullOrEmptyString(adminID) || isNullOrEmptyString(adminFirstName) || isNullOrEmptyString(adminLastName)|| isNullOrEmptyString(adminPhoneNumber))
+            throw new IllegalArgumentException("Please fill in all fields");
+        return new Admin.Builder().adminID(adminID).adminFirstName(adminFirstName).adminLastName(adminLastName).adminPhoneNumber(adminPhoneNumber).build();
     }
 }
